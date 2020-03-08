@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+Document: <span th:text="${document.description}">Document</span>
+<form action="/document/add" method="post" th:object="${document}" th:action="@{/document/add}">
+    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+    <input th:field="*{description}" type="text" name="description" value="12" th:value="${description}"/>
+    <input type="Submit">
+</form>
+<p><a th:href="@{/documents}" href='/documents'>View documents</a></p>
+</body>
+</html>

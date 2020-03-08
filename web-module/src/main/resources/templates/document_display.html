@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Documents</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+Document: <span th:text="${document.description}">Document</span>
+<tr th:text="${error}">error</tr>
+<form action="/document/find" method="post" th:object="${document}" th:action="@{/document/find}">
+    <input th:field="*{id}"  type="text" name="id" value="12" th:value="${id}"/>
+    <input type="Submit">
+</form>
+<table>
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>unique_number</td>
+        <td>description</td>
+    </tr>
+    </thead>
+    <tbody th:each="document: ${documents}">
+    <tr>
+        <td th:text="${document.id}">id</td>
+        <td th:text="${document.unique_number}">unique_number</td>
+        <td th:text="${document.description}">description</td>
+    </tr>
+    </tbody>
+</table>
+<p><a th:href="@{/documents}" href='/documents'>View documents</a></p>
+</body>
+
+</html>
